@@ -34,13 +34,20 @@ class App {
       );
 
       for (let j = 0; j < carNames.length; j++) {
+        // 이따 depth 수정하기
         if (randomNumbers[j] >= 4) carPositions[j]++;
         Console.print(`${carNames[j]} :` + "-".repeat(carPositions[j]));
       }
 
       Console.print("");
     }
+
     // 4. 우승자 출력(단, 우승자는 1명 이상일 수 있음)
+    const maxPositions = Math.max(...carPositions);
+
+    const winners = carNames.filter((_, i) => carPositions[i] === maxPositions);
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
+
     // 5. 잘못된 값 입력시 “[ERROR]” 로 시작하는 메시지와 함께 Error 발생 후 애플리케이션 종료
     // 6. 함수 단위로 구현하여 리팩토링
   }
