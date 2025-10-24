@@ -22,6 +22,27 @@ class App {
       "시도할 횟수는 몇 회인가요?"
     );
     const moveCount = Number(moveCountInput);
+
+    // 3. 자동차 전진
+    Console.print("실행 결과");
+
+    const carPositions = Array.from({ length: carNames.length }, () => 0);
+
+    for (let i = 0; i < moveCount; i++) {
+      const randomNumbers = Array.from({ length: carNames.length }, () =>
+        MissionUtils.Random.pickNumberInRange(0, 9)
+      );
+
+      for (let j = 0; j < carNames.length; j++) {
+        if (randomNumbers[j] >= 4) carPositions[j]++;
+        Console.print(`${carNames[j]} :` + "-".repeat(carPositions[j]));
+      }
+
+      Console.print("");
+    }
+    // 4. 우승자 출력(단, 우승자는 1명 이상일 수 있음)
+    // 5. 잘못된 값 입력시 “[ERROR]” 로 시작하는 메시지와 함께 Error 발생 후 애플리케이션 종료
+    // 6. 함수 단위로 구현하여 리팩토링
   }
 }
 
