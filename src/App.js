@@ -16,6 +16,12 @@ class App {
     if (carNames.length < 1) {
       throw new Error("[ERROR] 자동차 이름은 최소 1개 이상이어야 합니다.");
     }
+
+    // 2. 시도 횟수 입력
+    const moveCountInput = await Console.readLineAsync(
+      "시도할 횟수는 몇 회인가요?"
+    );
+    const moveCount = Number(moveCountInput);
   }
 }
 
