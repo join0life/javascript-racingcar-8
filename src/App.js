@@ -51,15 +51,6 @@ class App {
       Console.print("");
     };
 
-    const printWinners = (carNames, carPositions) => {
-      const maxPositions = Math.max(...carPositions);
-
-      const winners = carNames.filter(
-        (_, i) => carPositions[i] === maxPositions
-      );
-      Console.print(`최종 우승자 : ${winners.join(", ")}`);
-    };
-
     //1. 자동차 입력
     const { carNames, moveCount } = await getInput();
 
@@ -71,7 +62,14 @@ class App {
     const carPositions = playGame(carNames, moveCount);
 
     // 4. 우승자 출력
-    printWinners(carNames, carPositions);
+    this.printWinners(carNames, carPositions);
+  }
+
+  printWinners(carNames, carPositions) {
+    const maxPositions = Math.max(...carPositions);
+
+    const winners = carNames.filter((_, i) => carPositions[i] === maxPositions);
+    Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
 
